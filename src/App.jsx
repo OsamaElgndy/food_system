@@ -1,16 +1,18 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './App.css'
+import { ToastContainer  ,toast}  from 'react-toastify';
 import AuthLayout from "./modules/Shared/components/AuthLayout/AuthLayout"
 import NotFound from "./modules/Shared/components/NotFound/NotFound"
 import MasterLayout from "./modules/Shared/components/MasterLayout/MasterLayout"
 import Home from './modules/home/components/Home'
 import Categories from "./modules/Categories/components/CategoriesList/CategoriesList"
 import UsersList from './modules/Users/components/UsersList'
-import Login from "./modules/Authentication/components/Login/Login"
+import Login from './modules/Authentication/components/Login/Login';
 import ForgetPassword from "./modules/Authentication/components/Forgot_Password/ForgotPassword"
 import Register from "./modules/Authentication/components/Register/Register"
 import RecipesList from "./modules/Authentication/components/ResetPass/ResetPass"
+import './App.css'
 function App() {
+  toast.success("Successfuly")
 
   const routes = createBrowserRouter([
     {
@@ -47,10 +49,11 @@ function App() {
       ]
 
     }
+    
   ])
   return ( 
     <>
-
+      <ToastContainer />
 <RouterProvider router={routes}/>
     </>
   )

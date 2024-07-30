@@ -1,0 +1,35 @@
+.auth-container{
+height: 100vh;
+background-image: url("./imges/background.png");
+background-position: center;
+background-size: cover;
+}
+.bg-overlay{
+   background: linear-gradient(45deg, rgba(47,140,96,0.5) , rgba(0,0,0,0.5));
+  
+}
+*{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+letter-spacing: 1px;
+font-weight: 700;
+word-spacing: 2px;
+}
+.text-alert{
+   transform: translateY(-10px);
+
+}
+.text-info{
+   padding: 1.5rem;
+   font-family: sans-serif;
+   word-spacing: 3px;
+   text-transform: capitalize;
+   display: flex;
+   justify-content: space-between;
+}
+.text-p{
+   color: rgba(128, 128, 128, 0.45);
+   word-spacing: 0;
+   letter-spacing: 0;
+}
