@@ -17,6 +17,7 @@ function RecipesPass() {
       navigate("/login")
 
     } catch (errors) {
+      
       console.log(3);
       toast.error(errors.message)
 
