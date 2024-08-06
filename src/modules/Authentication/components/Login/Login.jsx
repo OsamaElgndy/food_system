@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from "../../../../imges/logo.png"
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom'
 import {  toast } from 'react-toastify';
 import axios from 'axios';
-function login() {
-  
+function login({fun}) {
+  let [view_passowrd , setView_password] = useState(false)
+
   let navigate = useNavigate()
   let url = 'https://upskilling-egypt.com:3006/api/v1/Users/Login'
   const { handleSubmit, register, formState: { errors } } = useForm();
   const onSubmit = async (values) => {
     try {
       let req = await axios.post(url, values)
-      console.log(req.data);
+      console.log(req.data.token);
+      localStorage.setItem("token" , req.data.token)
+      fun()
       toast.success("login  Successfully")
-      navigate("/DashBord")
+      navigate("/dashboard")
       
 
     } catch (errors) {
@@ -69,7 +72,13 @@ return (
                   {...register("password", {
                     validate: value => value.length > 8 || "password not valid!"
 
-                  })} type="password" class="form-control p-1" placeholder="password" aria-label="password" aria-describedby="basic-addon1" />
+                  })} type={view_passowrd?"password" : "text"} class="form-control p-1" placeholder="password" aria-label="password" aria-describedby="basic-addon1" />
+                 <span onClick={() =>{
+                   setView_password(!view_passowrd)
+                 }} class="input-group-text p-3">
+
+                  <i class="fa-solid fa-arrows-to-eye"></i>
+                 </span>
               </div>
               <div className='text-danger text-alert text-start'>
 

@@ -17,7 +17,6 @@ function RecipesPass() {
       navigate("/login")
 
     } catch (errors) {
-      console.log(3);
       toast.error(errors.message)
 
 
@@ -77,7 +76,6 @@ function RecipesPass() {
                 </div>
                 <div className='text-danger text-alert text-start'>
 
-                  {errors.password && errors.password.message}
                 </div>  <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text p-3" id="basic-addon1">
