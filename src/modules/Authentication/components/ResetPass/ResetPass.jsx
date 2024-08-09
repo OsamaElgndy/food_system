@@ -1,9 +1,10 @@
 import React from 'react'
 import logo from "../../../../imges/logo.png"
 import { useForm } from "react-hook-form";
-import {  useNavigate } from 'react-router-dom'
-import {  toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
 import axios from 'axios';
+import { password_validation } from '../../../../container/VALDATIONS';
 function RecipesPass() {
   let navigate = useNavigate()
   let url = "https://upskilling-egypt.com:3006/api/v1/Users/Reset"
@@ -17,8 +18,6 @@ function RecipesPass() {
       navigate("/login")
 
     } catch (errors) {
-      
-      console.log(3);
       toast.error(errors.message)
 
 
@@ -68,7 +67,7 @@ function RecipesPass() {
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text p-3" id="basic-addon1">
-                    <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-lock"></i>
                     </span>
                   </div>
                   <input
@@ -76,20 +75,18 @@ function RecipesPass() {
 
                     })} type="text" class="form-control p-1" placeholder="Otp" aria-label="password" aria-describedby="basic-addon1" />
                 </div>
+                
+
                 <div className='text-danger text-alert text-start'>
 
-                  {errors.password && errors.password.message}
                 </div>  <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text p-3" id="basic-addon1">
-                    <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-lock"></i>
                     </span>
                   </div>
                   <input
-                    {...register("password", {
-                      validate: value => value.length > 8 || "password not valid!"
-
-                    })} type="password" class="form-control p-1" placeholder="new password" aria-label="password" aria-describedby="basic-addon1" />
+                    {...register("password", password_validation)} type="password" class="form-control p-1" placeholder="new password" aria-label="password" aria-describedby="basic-addon1" />
                 </div>
                 <div className='text-danger text-alert text-start'>
 
@@ -97,12 +94,12 @@ function RecipesPass() {
                 </div>  <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text p-3" id="basic-addon1">
-                    <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-lock"></i>
                     </span>
                   </div>
                   <input
                     {...register("confirmPassword", {
-                      validate: value => value.length > 8 || "password not valid!"
+                      validate: "password not match!"
 
                     })} type="password" class="form-control p-1" placeholder="confirm password" aria-label="password" aria-describedby="basic-addon1" />
                 </div>
@@ -112,7 +109,7 @@ function RecipesPass() {
                 </div>
                 <div className='py-2'>
 
-                <button type='sudmint' className='bg-success btn px-4  w-100 mb-3' >Rest Password</button>
+                  <button type='sudmint' className='bg-success btn px-4  w-100 mb-3' >Rest Password</button>
                 </div>
               </form>
 

@@ -1,20 +1,38 @@
-import React from 'react'
+import React, { useState   ,useEffect} from 'react'
 import logo from "../../../../imges/logo.png"
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom'
 import {  toast } from 'react-toastify';
 import axios from 'axios';
-function login() {
+import {email_validation , password_validation} from "../../../../container/VALDATIONS"
+import { USER_URL } from '../../../../container/END_POINTS';
+
+function login({fun}) {
   
   let navigate = useNavigate()
-  let url = 'https://upskilling-egypt.com:3006/api/v1/Users/Login'
+  let [view_passowrd , setView_password] = useState(false)
+  useEffect(() =>{
+    if(localStorage.getItem("token")){
+      
+  navigate("/dashboard")
+  }
+  fun()
+  
+  } ,[])
+
+
+
+  
+
   const { handleSubmit, register, formState: { errors } } = useForm();
   const onSubmit = async (values) => {
     try {
-      let req = await axios.post(url, values)
-      console.log(req.data);
+      let req = await axios.post(USER_URL.login, values)
+      console.log(req.data.token);
+      localStorage.setItem("token" , req.data.token)
       toast.success("login  Successfully")
-      navigate("/DashBord")
+      navigate("/dashboard")
+      fun()
       
 
     } catch (errors) {
@@ -46,13 +64,8 @@ return (
                   </span>
                 </div>
                 <input type="text" class="form-control"
-                  {...register("email", {
-                    required: "Required",
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "invalid email address"
-                    }
-                  })} placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                  {...register("email", email_validation 
+                  )} placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
 
               </div>
               <div className='text-danger text-start  text-alert'>
@@ -66,10 +79,13 @@ return (
                   </span>
                 </div>
                 <input
-                  {...register("password", {
-                    validate: value => value.length > 8 || "password not valid!"
+                  {...register("password",  password_validation )} type={view_passowrd?"password" : "text"} class="form-control p-1" placeholder="password" aria-label="password" aria-describedby="basic-addon1" />
+                 <span onClick={() =>{
+                   setView_password(!view_passowrd)
+                 }} class="input-group-text p-3">
 
-                  })} type="password" class="form-control p-1" placeholder="password" aria-label="password" aria-describedby="basic-addon1" />
+                  <i class="fa-solid fa-arrows-to-eye"></i>
+                 </span>
               </div>
               <div className='text-danger text-alert text-start'>
 

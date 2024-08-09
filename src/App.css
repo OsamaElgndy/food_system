@@ -12,9 +12,8 @@ background-size: cover;
    padding: 0;
    margin: 0;
    box-sizing: border-box;
-letter-spacing: 1px;
-font-weight: 700;
-word-spacing: 2px;
+font-weight: 500;
+
 }
 .text-alert{
    transform: translateY(-10px);
@@ -27,9 +26,15 @@ word-spacing: 2px;
    text-transform: capitalize;
    display: flex;
    justify-content: space-between;
+   justify-content: space-;
 }
 .text-p{
    color: rgba(128, 128, 128, 0.45);
+   /* color: rgba(#00924e1f; */
    word-spacing: 0;
    letter-spacing: 0;
+}
+.icon{
+   /* color: ; */
+   transform: translateY(20px);
 }

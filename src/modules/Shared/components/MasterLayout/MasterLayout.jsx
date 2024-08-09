@@ -1,28 +1,38 @@
 import React from 'react'
-import SliderBar from "../SideBar/SideBar"
 import NavBar from "../NavBar/NavBar"
 import Home from '../../../home/components/Home'
-import { Outlet } from 'react-router-dom'
-function MasterLayout() {
+import { Outlet, useNavigate } from 'react-router-dom'
+import SideBar from '../SideBar/SideBar'
+function MasterLayout({login}) {
+  
+
+
   return (
     <>
 
-       <div className='container-fliud'>
 
-        <div className='row'>
-          <div className='col-md-3 bg-danger'>
-            <SliderBar/>
-          </div>
-          <div className='col-md-9 bg-warning' >
-            <NavBar/>
-            <Outlet/>
-          </div>
 
+
+     <div style={{textTransform:"capitalize"}} >
+  <div class="d-flex ">
+    <div class=" ">
+     <div style={{overflow:"hidden", borderRadius:"0px 70px 0px 0px" } }>
+      <SideBar/>
+      
+     </div>
+    </div>
+    <div className='w-100'>
+      <div class=" ">
+        <div className='container '>
+
+
+        <NavBar login={login}/>
         </div>
-
-
-       </div>
-
+         <Outlet login={login}/>
+      </div>
+    </div>
+  </div>
+</div>
     </>
   )
 }

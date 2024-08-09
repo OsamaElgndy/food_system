@@ -4,13 +4,15 @@ import { useForm } from "react-hook-form";
 import {  useNavigate } from 'react-router-dom'
 import {  toast } from 'react-toastify';
 import axios from 'axios';
+import { email_validation } from '../../../../container/VALDATIONS';
+import { USER_URL } from '../../../../container/END_POINTS';
 function Forgetpass() {
   let navigate = useNavigate()
-  let url = "https://upskilling-egypt.com:3006/api/v1/Users/Reset/Request"
+  
   const { handleSubmit, register, formState: { errors } } = useForm();
   const onSubmit = async (values) => {
     try {
-      let req = await axios.post(url, values)
+      let req = await axios.post(USER_URL.resetRequest, values)
       console.log(req.data);
       toast.success(" email is vaild ")
      navigate("/recipesPass")
@@ -52,17 +54,12 @@ return (
                   </span>
                 </div>
                 <input type="email" class="form-control "
-                  {...register("email", {
-                    required: "Required",
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "invalid email address"
-                    }
-                  })} placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                  {...register("email", email_validation
+                   
+                  )} placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
 
               </div>
               <div className='text-danger text-start  text-alert'>
-
                 {errors.email && errors.email.message}
        
               </div>
