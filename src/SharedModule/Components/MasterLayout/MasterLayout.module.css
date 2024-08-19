@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    
+  }
+  
+  .content {
+    flex: 1;
+  }
+ 
+  .sidebar{
+    background-color: #1F263E;
+    border-top-right-radius: 40px;
+  }
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none; 
+    }
+  
+    .content {
+      flex: 1; 
+    }
+  }
+
+  

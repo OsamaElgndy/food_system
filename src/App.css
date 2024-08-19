@@ -1,0 +1,83 @@
+html,
+body,
+.modal-content {
+  font-family: "Montserrat", sans-serif;
+}
+.Auth-container {
+  background-image: url(assets/images/auth-bg.png);
+  background-size: cover;
+  font-family: "Montserrat", sans-serif;
+}
+.bg-overlay {
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.4),
+    rgba(47, 140, 51, 0.7)
+  );
+}
+.sidebar-container .ps-sidebar-root {
+  border-top-right-radius: 40px;
+}
+.sidebar-container .ps-sidebar-container {
+  background-color: #1f263e;
+  border-top-right-radius: 40px;
+  color: #fff;
+}
+.sidebar-container .ps-sidebar-container .ps-menu-button:hover {
+  background-color: rgba(0, 146, 71, 0.1);
+}
+.header-content {
+  background-image: url(./assets/images/heade-bg.png);
+  background-size: cover;
+}
+.home-sec {
+  background-color: rgba(240, 255, 239, 1);
+}
+.rec-image-container,
+.image-container {
+  width: 35px;
+}
+.input-group>.form-control:focus, .input-group>.form-floating:focus-within, 
+.input-group>.form-select:focus {
+    outline: none !important;
+    border:1px solid green;
+    box-shadow: 0 0 10px green;
+  }
+  .filtration-group .form-select:focus, .form-select:focus{  outline: none !important;
+    outline: none !important;
+    border:1px solid green;
+    box-shadow: 0 0 10px green;}
+/* pagination */
+.pagination > li > a,
+.pagination > li > span {
+  color: green;
+}
+
+.pagination .page-item .page-link:focus, .pagination .page-item .page-link:active{
+  background-color: green !important;
+  color: #fff !important;
+}
+.notfound{
+  width: 800px;
+  height: 100vh;
+}
+.prePosition{
+  margin-top: 210px;
+}
+
+.headerImg{
+  -webkit-animation: mover 1s infinite  alternate;
+  animation: mover 1s infinite  alternate;
+}
+.headerImg {
+  -webkit-animation: mover 1s infinite  alternate;
+  animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+@keyframes mover {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
