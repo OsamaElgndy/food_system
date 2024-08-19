@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
-import Header from "../../../SharedModule/Components/Header_section/Header_section";
-import headerImg from "../../../assets/images/head1.png";
-import nodata from "../../../assets/images/nodata.png";
-import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-import noData from "../../../assets/images/nodata.png";
-import NoData from "../../../SharedModule/Components/NoData/NoData";
-import { toast } from "react-toastify";
-import PreLoader from "../../../SharedModule/Components/PreLoader/PreLoader";
+import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import Modal from "react-bootstrap/Modal";
 import Pagination from "react-bootstrap/Pagination";
+import { toast } from "react-toastify";
+import headerImg from "../../../assets/images/head1.png";
+import { default as nodata, default as noData } from "../../../assets/images/nodata.png";
 import { BASE_IMG_URL, USER_URL } from "../../../container/END_POINTS";
+import Header from "../../../SharedModule/Components/Header_section/Header_section";
+import NoData from "../../../SharedModule/Components/NoData/NoData";
+import PreLoader from "../../../SharedModule/Components/PreLoader/PreLoader";
 
 export default function UsersList() {
 
   let [usersList, setUsersList] = useState([]);
   let [itemId, setItemId] = useState(0);
-  const [searchByName, setSearchByName] = useState("");
+  const [searchByName, setSearchByName] = useState("")
   const [searchByEmail, setSearchByEmail] = useState("");
-  const [showLoading, setShowLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);      
   const [pagesArray, setPagesArray] = useState([]);
   const [modalState, setModalState] = useState("close");
   const showDeleteModal = (id) => {
@@ -42,18 +41,24 @@ export default function UsersList() {
 
 
 
-  const raangPage = (currentPage , totalNumberofPagev) => {
-        
+  const rangPage = (currentPage, totalNumberofPagev) => {
+
     // returen  to  the previous
-      if ( currentPage == pagesArray[0]) {
-        if (currentPage - 10  <=  0) {
-          return  range( 1,  11 )
-          
+    if (currentPage == pagesArray[0]) {
+      if (currentPage - 10 <= 0) {
+        if (currentPage + 11 >= 11) {
+
+          return range(1, 11)
+        } else {
+          return range(1, pagesArray?.length)
+
         }
-         
-        return  range( currentPage - 10 , curntePage -1 )
+
       }
-      //  the page end  
+
+      return range(currentPage - 10, currentPage - 1)
+    }
+    //  the page end  
     if (currentPage - 10 > totalNumberofPagev) {
       return range(totalNumberofPagev - 1, totalNumberofPagev - 10)
     }
@@ -117,7 +122,7 @@ export default function UsersList() {
       .then((response) => {
 
         setPagesArray(
-          (raangPage(response?.data.pageNumber, response?.data?.totalNumberOfPages))
+          (rangPage(response?.data.pageNumber, response?.data?.totalNumberOfPages))
 
         );
         setShowLoading(false);

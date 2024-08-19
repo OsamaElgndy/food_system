@@ -18,7 +18,6 @@ import { RECIPES_URL, BASE_TAG, CATEGORY_URL, BASE_IMG_URL, URL_Favorite, header
 import Swal from 'sweetalert2'
 export default function RecipesList() {
   const { login } = useContext(Login_data)
-  const [img_path, setImg_path] = useState("")
   const [showLoading, setShowLoading] = useState(false);
   const [pagesArray, setPagesArray] = useState([]);
   let [recipesList, setRecipesList] = useState([]);
@@ -28,6 +27,8 @@ export default function RecipesList() {
   let [tagList, setTagList] = useState([]);
   let [searchString, setSearchString] = useState("");
   let [selectedTagId, setSelectedTagId] = useState(0);
+  const [modalState, setModalState] = useState("close");
+
   let [selectedCategoryId, setSelectedCategoryId] = useState(0);
   let {
     register,
@@ -40,11 +41,11 @@ export default function RecipesList() {
 
 
   useEffect(() => {
-    const Call_page_date = async () => {
+    const Call_page_date = () => {
 
-      getAllTags()
-      getCategoryList();
-      getAllRecipes();
+       getAllTags()
+       getCategoryList();
+       getAllRecipes();
       const store_data = JSON.parse(localStorage.getItem("recipe_item"))
       reset(store_data)
     }
@@ -62,7 +63,6 @@ export default function RecipesList() {
   })
 
 
-  const [modalState, setModalState] = useState("close");
 
 
   const Form_data = (values) => {
@@ -76,8 +76,6 @@ export default function RecipesList() {
     return data_convert;
 
   }
-
-
 
   const showAddModal = () => {
 
@@ -120,9 +118,6 @@ export default function RecipesList() {
 
 
   const postfavorite = (recipeId) => {
-    console.log("=============================>" ,recipeId.id );
-    
- 
  
     axios
       .post(URL_Favorite.PostFavorite,{ "recipeId":recipeId.id},
@@ -151,18 +146,13 @@ export default function RecipesList() {
   }
 
 
-
-
-
-
   const getCategoryList = () => {
     axios
       .get(
         CATEGORY_URL.gitList,
         {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-          },
+          headers: headers
+         
         }
       )
       .then((response) => {
@@ -184,9 +174,8 @@ export default function RecipesList() {
   const getAllTags = () => {
     axios
       .get(BASE_TAG, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-        },
+        headers: headers
+
       })
       .then((response) => {
         setTagList(response?.data);
@@ -209,9 +198,7 @@ export default function RecipesList() {
     setShowLoading(true);
     axios
       .delete(RECIPES_URL.delete_recipes(itemId), {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-        },
+        headers: headers
       })
       .then((response) => {
         console.log(response);
@@ -254,9 +241,7 @@ export default function RecipesList() {
         ,
         post_data,
         {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-          },
+           headers:headers
         }
       )
       .then((response) => {
@@ -274,7 +259,6 @@ export default function RecipesList() {
         );
       })
       .catch((error) => {
-        console.log(response);
 
         toast.error(
           error?.response?.data?.message ||
@@ -502,9 +486,7 @@ export default function RecipesList() {
                 const path = URL.createObjectURL(eve.currentTarget.children[0].files[0])
 
                 //  useState 
-                setImg_path(path)
-                eve.currentTarget.children[1].src = img_path;
-                console.log(img_path);
+                eve.currentTarget.children[1].src = path;
 
 
               }} className="form-group my-2 ">
