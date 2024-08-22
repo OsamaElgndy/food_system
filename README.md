@@ -1,11 +1,44 @@
-# React + Vite
+Hello everyone! 🎤 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ I'm excited to announce the completion of my latest project. 👌 
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-  <h1>hello world  </h1>
-  <h1>https://main--appfoodsystem.netlify.app/#/login </h1>
-  
+I would like to thank my teacher Nadia Mohamed Taha for her amazing effort and constant encouragement, as well as Eng Ahmed Ali for supporting us all the time.and all Upskilling Team.
+
+This is the first project of our JSB program @ Upskilling , very excited for the next one! 
+
+↪Used packages
+
+✅react-typescript
+✅vite
+✅fontawesome
+✅axios
+✅bootstrap
+✅react-bootstrap
+✅react-router-dom
+✅react-hook-form
+✅react-pro-sidebar
+✅react-toastify
+✅react-hoot-toast
+✅react
+✅netlify
+
+↪Business features
+
+🟡User management roles (admin/user)
+🟢Authentication module
+🟡Categories module
+🟢dashboard module
+🟡receipies module
+🟢users module
+🟡Context routing
+🟡React, Crud operations Api calling with Axios
+🟢forms with validation
+🟡Auth/Master layout
+🟢deployment with netlify/github
+🟡Login using GoogleAcount
+
+ ▶ github repo link
+https://lnkd.in/eHtWcwPK
+▶ live demo of project
+https://lnkd.in/eGFsET-z
