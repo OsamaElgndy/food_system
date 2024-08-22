@@ -10,9 +10,16 @@ This is the first project of our JSB program @ Upskilling , very excited for the
 ↪Used packages
 
 ✅react-typescript
+<br/>
 ✅vite
+<br/>
+
 ✅fontawesome
+<br/>
+
 ✅axios
+<br/>
+
 ✅bootstrap
 ✅react-bootstrap
 ✅react-router-dom
